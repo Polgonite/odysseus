@@ -39,7 +39,7 @@ services:
       - RESEARCH_LLM_ENDPOINT=${RESEARCH_LLM_ENDPOINT:-}
       - HF_TOKEN=${HF_TOKEN:-}
       - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN:-}
-      - SEARXNG_INSTANCE=http://searxng:8095
+      - SEARXNG_INSTANCE=http://searxng:8080
       - CHROMADB_HOST=chromadb
       - CHROMADB_PORT=8000
       - DATABASE_URL=${DATABASE_URL:-sqlite:///./data/app.db}
@@ -144,7 +144,7 @@ services:
       - SETUID
       - DAC_OVERRIDE
     healthcheck:
-      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8095/', timeout=5).read(1)\""]
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8080/', timeout=5).read(1)\""]
       interval: 5s
       timeout: 6s
       retries: 20
